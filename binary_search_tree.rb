@@ -7,7 +7,11 @@ class BinarySearchTree
 
   def insert(new_value)
     if new_value < self.value
-      self.left = BinarySearchTree.new(new_value)
+      if self.left
+        self.left.insert(new_value)
+      else
+        self.left = BinarySearchTree.new(new_value)
+      end
     else
       self.right = BinarySearchTree.new(new_value)
     end
