@@ -13,7 +13,11 @@ class BinarySearchTree
         self.left = BinarySearchTree.new(new_value)
       end
     else
-      self.right = BinarySearchTree.new(new_value)
+      if self.right
+        self.right.insert(new_value)
+      else
+        self.right = BinarySearchTree.new(new_value)
+      end
     end
   end
 
