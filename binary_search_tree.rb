@@ -5,11 +5,11 @@ class BinarySearchTree
     @value = value
   end
 
-  def insert(value)
-    if value < self.value
-      self.left = BinarySearchTree.new(value)
+  def insert(new_value)
+    if new_value < self.value
+      self.left = BinarySearchTree.new(new_value)
     else
-      self.right = BinarySearchTree.new(value)
+      self.right = BinarySearchTree.new(new_value)
     end
   end
 
