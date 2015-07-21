@@ -29,6 +29,26 @@ class BinarySearchTree
     end
   end
 
+  def in_order_as_list()
+    left_branch().push(self.value()).concat(right_branch())
+  end
+
   private
   attr_writer :left, :right
+
+  def left_branch
+    if self.left()
+      self.left().in_order_as_list()
+    else
+      []
+    end
+  end
+
+  def right_branch
+    if self.right()
+      self.right().in_order_as_list()
+    else
+      []
+    end
+  end
 end
