@@ -21,6 +21,14 @@ class BinarySearchTree
     end
   end
 
+  def self.create_from_list(numbers)
+    tree = BinarySearchTree.new(numbers.first)
+    numbers.drop(1).reduce(tree) do |tree, value|
+      tree.insert(value)
+      tree
+    end
+  end
+
   private
   attr_writer :left, :right
 end
