@@ -5,17 +5,9 @@ class BinarySearchTree
 
   def insert(new_value)
     if new_value < value
-      if left
-        left.insert(new_value)
-      else
-        self.left = BinarySearchTree.new(new_value)
-      end
+      self.left = add_value_at(left, new_value)
     else
-      if right
-        right.insert(new_value)
-      else
-        self.right = BinarySearchTree.new(new_value)
-      end
+      self.right = add_value_at(right, new_value)
     end
   end
 
@@ -48,6 +40,15 @@ class BinarySearchTree
       right.in_order_as_list()
     else
       []
+    end
+  end
+
+  def add_value_at(sub_tree, new_value)
+    if sub_tree
+      sub_tree.insert(new_value)
+      sub_tree
+    else
+      BinarySearchTree.new(new_value)
     end
   end
 end
