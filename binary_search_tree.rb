@@ -1,20 +1,18 @@
 class BinarySearchTree
-  attr_reader :value, :left, :right
-
   def initialize(value)
     @value = value
   end
 
   def insert(new_value)
-    if new_value < self.value
-      if self.left
-        self.left.insert(new_value)
+    if new_value < value
+      if left
+        left.insert(new_value)
       else
         self.left = BinarySearchTree.new(new_value)
       end
     else
-      if self.right
-        self.right.insert(new_value)
+      if right
+        right.insert(new_value)
       else
         self.right = BinarySearchTree.new(new_value)
       end
@@ -30,23 +28,24 @@ class BinarySearchTree
   end
 
   def in_order_as_list()
-    left_branch().push(self.value()).concat(right_branch())
+    left_branch().push(value).concat(right_branch())
   end
 
   private
-  attr_writer :left, :right
+  attr_accessor :left, :right
+  attr_reader :value
 
   def left_branch
-    if self.left()
-      self.left().in_order_as_list()
+    if left
+      left.in_order_as_list()
     else
       []
     end
   end
 
   def right_branch
-    if self.right()
-      self.right().in_order_as_list()
+    if right
+      right.in_order_as_list()
     else
       []
     end
