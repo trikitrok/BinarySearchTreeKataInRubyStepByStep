@@ -19,7 +19,7 @@ class BinarySearchTree
     end
   end
 
-  def in_order_as_list()
+  def in_order()
     sorted_list = tree_in_order left_tree
     sorted_list.push(value)
     sorted_list.concat(tree_in_order right_tree)
@@ -31,7 +31,7 @@ class BinarySearchTree
 
   def tree_in_order tree
     if tree
-      tree.in_order_as_list()
+      tree.in_order()
     else
       []
     end
