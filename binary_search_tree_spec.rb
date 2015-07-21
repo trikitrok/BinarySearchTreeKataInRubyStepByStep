@@ -32,10 +32,4 @@ describe BinarySearchTree do
 
     expect(tree.in_order()).to eq [1, 2, 3, 4, 5, 6, 8]
   end
-
-  it "returns the elements of a complex tree as a sorted list" do
-    tree = BinarySearchTree.create_from_list([4, 6, 5, 8, 2, 3, 1])
-
-    expect(tree.in_order()).to eq [1, 2, 3, 4, 5, 6, 8]
-  end
 end
