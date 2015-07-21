@@ -5,9 +5,9 @@ class BinarySearchTree
 
   def insert(new_value)
     if new_value < value
-      self.left = add_value_at(left, new_value)
+      self.left_tree = add_value_at(left_tree, new_value)
     else
-      self.right = add_value_at(right, new_value)
+      self.right_tree = add_value_at(right_tree, new_value)
     end
   end
 
@@ -20,33 +20,27 @@ class BinarySearchTree
   end
 
   def in_order_as_list()
-    left_branch().push(value).concat(right_branch())
+    sorted_list = tree_in_order left_tree
+    sorted_list.push(value)
+    sorted_list.concat(tree_in_order right_tree)
   end
 
   private
-  attr_accessor :left, :right
+  attr_accessor :left_tree, :right_tree
   attr_reader :value
 
-  def left_branch
-    if left
-      left.in_order_as_list()
+  def tree_in_order tree
+    if tree
+      tree.in_order_as_list()
     else
       []
     end
   end
 
-  def right_branch
-    if right
-      right.in_order_as_list()
-    else
-      []
-    end
-  end
-
-  def add_value_at(sub_tree, new_value)
-    if sub_tree
-      sub_tree.insert(new_value)
-      sub_tree
+  def add_value_at(tree, new_value)
+    if tree
+      tree.insert(new_value)
+      tree
     else
       BinarySearchTree.new(new_value)
     end
